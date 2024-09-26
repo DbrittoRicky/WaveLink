@@ -40,7 +40,7 @@ import { toast } from "sonner"
 
     return (
       <Dialog open={open} onOpenChange={handleClose}>
-        <DialogContent>
+        <DialogContent className="bg-white text-black">
             <DialogHeader>
                 <DialogTitle>Add a Workspace</DialogTitle>
             </DialogHeader>
