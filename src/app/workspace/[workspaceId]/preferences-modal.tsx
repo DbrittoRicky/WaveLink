@@ -99,7 +99,7 @@ const PreferencesModal = ({open, setOpen, initialValue}: PreferencesModalProps) 
                             </DialogTitle>
                         </DialogHeader>
                         <form className="space-y-4" onSubmit={handleEdit}>
-                            <Input value={value} disabled={isUpdatingWorkspace} onChange={(e) => setValue(e.target.value)} required autoFocus minLength={3} maxLength={80} placeholder="Workspace name"/>
+                            <Input value={value} disabled={isUpdatingWorkspace} onChange={(e) => setValue(e.target.value)} required autoFocus minLength={3} maxLength={80} placeholder="Workspace name" className="bg-white"/>
                             <DialogFooter>
                                 <DialogClose asChild>
                                     <Button variant="outline" disabled={isUpdatingWorkspace}>

@@ -10,11 +10,15 @@ import { useGetChannels } from '@/features/channels/api/use-get-channels';
 import WorkspaceSection from './workspace-section';
 import { useGetMembers } from '@/features/members/api/use-get-members';
 import UserItem from './user-item';
+import { useCreateChannelModal } from '@/features/channels/store/use-create-channel-modal';
+import { useChannelId } from '@/hooks/use-channel-id';
 
 
 
 const WorkspaceSidebar = () => {
+    const channelId = useChannelId()
     const workspaceId = useWorkspaceId();
+    const [_open, setOpen] = useCreateChannelModal()
 
     const {data: member, isLoading: memberLoading} = useCurrentMember({workspaceId})
     const {data: workspace, isLoading: workspaceLoading} = useGetWorkspace({id: workspaceId})
@@ -39,15 +43,15 @@ const WorkspaceSidebar = () => {
     }
 
   return (
-    <div className='flex flex-col bg-gradient-to-br from-[#457fca] to-[#5691c8] h-full'>
+    <div className="flex flex-col bg-[#2c889f] h-full drop-shadow-md">
         <WorkspaceHeader workspace={workspace} isAdmin={member.role === "admin"}/>
         <div className='flex flex-col px-2 mt-3'>
-            <SidebarItem label="Threads" icon={MessageSquareText} id="threads"/>
+            <SidebarItem label="Threads" icon={MessageSquareText} id="threads" />
             <SidebarItem label="Drafts & Sent" icon={SendHorizonal} id="drafts"/>
             </div>
-            <WorkspaceSection label="Channels" hint="New Channel" onNew={() => {}}>
+            <WorkspaceSection label="Channels" hint="New Channel" onNew={member.role === "admin" ? () => setOpen(true) : undefined}>
                 {channels?.map((item) => (
-                    <SidebarItem key={item._id} icon={HashIcon} label={item.name} id={item._id}/>
+                    <SidebarItem key={item._id} icon={HashIcon} label={item.name} id={item._id} variant={channelId === item._id ? "active" : "default"}/>
                 ))}
             </WorkspaceSection>
             <WorkspaceSection label="Direct Messages" hint="New Direct message" onNew={() => {}}>

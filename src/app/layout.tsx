@@ -34,7 +34,12 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ConvexClientProvider>
           <JotaiProvider>
-          <Toaster/>
+          <Toaster toastOptions={{
+           
+            classNames: {
+              toast: "bg-white text-black"
+            }
+          }}/>
         <Modals/>
         {children}
         </JotaiProvider>

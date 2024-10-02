@@ -9,13 +9,13 @@ const Sidebar = () => {
 const pathname = usePathname()
 
   return (
-    <aside className='w-[70px] h-full flex flex-col gap-y-4 items-center pt-[9px] pb-4 bg-gradient-to-b from-[#3d72b4] to-[#3a6073] drop-shadow-md '>
+    <aside className="w-[70px] h-full flex flex-col gap-y-4 items-center pt-[9px] pb-4 bg-[url('/bg.jpg')] bg-cover drop-shadow-md">
         
         <WorkspaceSwitcher/>
         <SidebarButton icon={Home} label='Home' isActive={pathname.includes("/workspace")}/>
-        <SidebarButton icon={MessagesSquare} label='Messages' isActive/>
-        <SidebarButton icon={Bell} label='Activity' isActive/>
-        <SidebarButton icon={MoreHorizontal} label='More' isActive/>
+        <SidebarButton icon={MessagesSquare} label='Messages' />
+        <SidebarButton icon={Bell} label='Activity' />
+        <SidebarButton icon={MoreHorizontal} label='More' />
         <div className='flex flex-col items-center justify-center gap-y-3 mt-auto'>
             <UserButton/>
         </div>
